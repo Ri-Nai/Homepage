@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22.13.1'
-          cache: 'pnpm'
 
       # 3. 安装 pnpm
       - name: Install pnpm
