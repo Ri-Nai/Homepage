@@ -42,6 +42,7 @@ onMounted(async () => {
   padding: 0.5em;
   border-radius: 0.5em;
   background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: background-color 0.3s;
 
@@ -80,6 +81,8 @@ onMounted(async () => {
 @media (prefers-color-scheme: light) {
   .menu-button {
     background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
   }
 
   .menu-button:hover {
