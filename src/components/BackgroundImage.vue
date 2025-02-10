@@ -45,4 +45,10 @@ defineProps<{ imageUrl: string | null }>()
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+@media (prefers-color-scheme: light) {
+  .background-container::after {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
 </style>

@@ -80,4 +80,14 @@ svg {
   width: 100%;
   height: 100%;
 }
+
+@media (prefers-color-scheme: light) {
+  .menu-button {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
 </style>
