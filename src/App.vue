@@ -1,28 +1,39 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import yaml from 'js-yaml'
 
 import BackgroundImage from './components/BackgroundImage.vue'
 import Ri_NaiAvatar from './components/Ri-NaiAvatar.vue'
 import FadeIn from './components/FadeIn.vue'
 import PersonalMenu from './components/PersonalMenu.vue'
-// 使用 ?raw 后缀导入 config.yaml 的原始内容
-import configText from './config.yaml?raw'
 
-// 解析 YAML 得到配置对象
-const config = yaml.load(configText)
-
+import config from './config'
 // 定义 reactive 数据
-const bgUrl = ref<string | null>()
-bgUrl.value = new URL(config.background, import.meta.resolve('./')).href
+// 使用 import.meta.glob 动态导入所有图片
+const images: Record<string, { default: string }> = import.meta.glob(['./assets/*', './assets/icons/*'], { eager: true });
 
+for (const path in images) {
+  console.log(`Image path: ${path}`, images[path].default);
+}
+
+const bgUrl = ref<string | null>(null)
 const avatarUrl = ref<string | null>(config?.avatar || null)
-avatarUrl.value = new URL(config.avatar, import.meta.resolve('./')).href
 
+if (config.background) {
+  config.background = images[config.background]?.default || '';
+  bgUrl.value = config.background;
+}
+
+if (config.avatar) {
+  config.avatar = images[config.avatar]?.default || '';
+  avatarUrl.value = config.avatar;
+}
 
 for (const item of config.menu) {
-  item.icon = new URL(item.icon, import.meta.resolve('./')).href
+  if (item.icon) {
+    item.icon = images[item.icon]?.default || '';
+  }
 }
+
 
 console.log('config:', config)
 
