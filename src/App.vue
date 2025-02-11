@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import BackgroundImage from './components/BackgroundImage.vue'
-import Ri_NaiAvatar from './components/Ri-NaiAvatar.vue'
-import FadeIn from './components/FadeIn.vue'
-import PersonalMenu from './components/PersonalMenu.vue'
+// import config from './config'
+import yaml from 'js-yaml'
+import configText from './config.yaml?raw'
 
-import config from './config'
+const config: any = yaml.load(configText)
+
 // 定义 reactive 数据
 // 使用 import.meta.glob 动态导入所有图片
 const images: Record<string, { default: string }> = import.meta.glob(['./assets/*', './assets/icons/*'], { eager: true });
@@ -37,6 +37,10 @@ for (const item of config.menu) {
 
 console.log('config:', config)
 
+import BackgroundImage from './components/BackgroundImage.vue'
+import Ri_NaiAvatar from './components/Ri-NaiAvatar.vue'
+import FadeIn from './components/FadeIn.vue'
+import PersonalMenu from './components/PersonalMenu.vue'
 </script>
 
 <template>
