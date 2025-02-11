@@ -18,5 +18,7 @@ menu:
     title: Bilibili
     url: https://space.bilibili.com/4151993
     icon: ./assets/icons/brand-bilibili.svg
-
-  
+  - name: steam
+    title: Steam
+    url: https://steamcommunity.com/id/Reina__/
+    icon: ./assets/icons/steam.svg
