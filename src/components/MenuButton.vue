@@ -20,12 +20,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a v-if="url" :href="url">
+  <a :href="url || ''" :title="title || ''">
     <div class="menu-button">
       <template v-if="!imageUrl?.includes('null')">
         <div v-if="imageUrl?.includes('svg')" class="menu-button-icon" v-html="svgContent" />
         <div v-else class="menu-button-icon">
-          <img v-if="imageUrl" :src="imageUrl" alt="icon" />
+          <img :src="imageUrl || ''" alt="icon" />
         </div>
       </template>
       <span class="menu-button-title">{{ title }}</span>
@@ -48,7 +48,7 @@ onMounted(async () => {
   transition: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   text-decoration: none;
-  
+
   .menu-button-title {
     flex: 1;
     text-align: center;
